@@ -130,11 +130,6 @@ function onEachFeatureRio(feature, layer) {
 
 }
 
-
-
-
-
-
 var acudes = L.geoJSON(acudes, {
     style:acudesStyle,
     onEachFeature: onEachFeatureAcude
@@ -152,7 +147,38 @@ var rios_drenagem_principal = L.geoJSON(rios_drenagem_principal, {
     onEachFeature: onEachFeatureRio
 });
 
+function onEachFeaturePocos(feature, layer) {
+    if (feature.properties) {
+      const p = feature.properties;
 
+      // Monta o conteúdo HTML do Popup com os dados da feição
+      const popupContent = `
+        <div style="font-family: sans-serif; font-size: 13px; line-height: 1.5;">
+          <h4 style="margin: 0 0 6px 0; color: #1e3a8a;">Poço #${p.fid}</h4>
+          <b>Município:</b> ${p.municipio}<br>
+          <b>Proprietário:</b> ${p.proprietario}<br>
+          <b>Órgão:</b> ${p.orgao}<br>
+          <b>Data de Perfuração:</b> ${p.data_perfuracao}<br>
+          <b>Profundidade:</b> ${p.profundidade} m<br>
+          <b>Vazão:</b> ${p.q_m3h} m³/h<br>
+          <b>Equipamento:</b> ${p.equipamento}<br>
+          <b>Região:</b> ${p.microregiao} (${p.mesoregiao})
+        </div>
+      `;
+
+      layer.bindPopup(popupContent);
+  }
+
+}
+
+// criar camada de pocos
+var pocos = L.geoJSON(pocos, {
+    onEachFeature: onEachFeaturePocos
+});
+
+//adicionar o cluster
+var pocosCluster = L.markerClusterGroup();
+pocosCluster.addLayer(pocos);
 
 
 var map = L.map('map', {
@@ -169,7 +195,8 @@ var baseMaps = {
 var overlayMaps = {
     "Açudes": acudes,
     "Bacias Hidrográgicas": bacias_hidro,
-    "Rios - Drenagem Princial": rios_drenagem_principal
+    "Rios - Drenagem Princial": rios_drenagem_principal,
+    "Poços": pocosCluster
 };
 
 
