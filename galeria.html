@@ -1,111 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GeoPortal - Galeria</title>
-	<!-- Importação do Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoPortal - Galeria de Mapas</title>
+  
+  <!-- Bootstrap CSS & Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<div id="navbar" class="container py-3">
-		<a href="index.html">Início</a> ||
-		<a href="galeria.html">Galeria</a> ||
-		<a href="downloads.html">Downloads</a>
-	</div>
 
-	<hr>
-	
-	<div class="container my-4">
-		<h1 class="mb-4">Galeria de Mapas</h1>
+  <!-- Menu de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <i class="fa-solid fa-earth-americas fa-lg"></i>
+        <span class="fw-bold">GeoPortal SIGWeb</span>
+      </a>
+      <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fa-solid fa-map me-1"></i> Mapa Interativo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="galeria.html"><i class="fa-solid fa-images me-1"></i> Galeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="downloads.html"><i class="fa-solid fa-download me-1"></i> Downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-		<!-- Início da grade em 2 colunas -->
-		<div class="row g-4">
+  <main class="container my-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary"><i class="fa-solid fa-map-location-dot me-2"></i>Galeria Temática de Mapas</h1>
+      <p class="text-muted lead">Acervo cartográfico estático de alta resolução disponível para consulta e exportação.</p>
+    </div>
 
-			<!-- Item 1 -->
-			<div class="col-md-6">
-				<div class="card h-100 shadow-sm">
-					<div class="bg-light text-center p-2">
-						<img src="img/bacias_hidrograficas.png" class="card-img-top" alt="Bacias Hidrográficas" style="height: 300px; object-fit: contain;">
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Bacias Hidrográficas</h5>
-						<p class="card-text">Mapa temático abordando a distribuição espacial das bacias hidrográficas da região.</p>
-					</div>
-				</div>
-			</div>
+    <!-- Grade de Mapas -->
+    <div class="row g-4">
 
-			<!-- Item 2 -->
-			<div class="col-md-6">
-				<div class="card h-100 shadow-sm">
-					<div class="bg-light text-center p-2">
-						<img src="img/acudes_monitorados.png" class="card-img-top" alt="Açudes e Rios Monitorados" style="height: 300px; object-fit: contain;">
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Açudes e Rios Monitorados</h5>
-						<p class="card-text">Visualização dos principais corpos d'água sob monitoramento contínuo.</p>
-					</div>
-				</div>
-			</div>
+      <!-- Item 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="bg-light text-center p-3 rounded-top">
+            <img src="img/bacias_hidrograficas.png" class="card-img-top img-fluid modal-trigger" alt="Bacias Hidrográficas" style="height: 240px; object-fit: contain; cursor: pointer;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-primary mb-2 w-auto align-self-start">Hidrologia</span>
+            <h5 class="card-title fw-bold">Bacias Hidrográficas</h5>
+            <p class="card-text text-muted flex-grow-1">Distribuição e limites territoriais das bacias e sub-bacias hidrográficas regionais.</p>
+            <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="openMapModal('img/bacias_hidrograficas.png', 'Bacias Hidrográficas')"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Ampliar Mapa</button>
+          </div>
+        </div>
+      </div>
 
-			<!-- Item 3 -->
-			<div class="col-md-6">
-				<div class="card h-100 shadow-sm">
-					<div class="bg-light text-center p-2">
-						<img src="img/mesorregioes.png" class="card-img-top" alt="Mesorregiões" style="height: 300px; object-fit: contain;">
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Mesorregiões</h5>
-						<p class="card-text">Delimitação territorial das mesorregiões presentes na área de estudo da SIGWeb.</p>
-					</div>
-				</div>
-			</div>
+      <!-- Item 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="bg-light text-center p-3 rounded-top">
+            <img src="img/acudes_monitorados.png" class="card-img-top img-fluid modal-trigger" alt="Açudes e Rios Monitorados" style="height: 240px; object-fit: contain; cursor: pointer;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-info mb-2 w-auto align-self-start">Monitoramento</span>
+            <h5 class="card-title fw-bold">Açudes e Rios Monitorados</h5>
+            <p class="card-text text-muted flex-grow-1">Mapeamento dos reservatórios de água e trechos fluviais sob acompanhamento contínuo.</p>
+            <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="openMapModal('img/acudes_monitorados.png', 'Açudes e Rios Monitorados')"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Ampliar Mapa</button>
+          </div>
+        </div>
+      </div>
 
-			<!-- Item 4 -->
-			<div class="col-md-6">
-				<div class="card h-100 shadow-sm">
-					<div class="bg-light text-center p-2">
-						<img src="img/microrregiao.png" class="card-img-top" alt="Microrregiões" style="height: 300px; object-fit: contain;">
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Microrregiões</h5>
-						<p class="card-text">Detalhamento espacial focado nas microrregiões do território.</p>
-					</div>
-				</div>
-			</div>
+      <!-- Item 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="bg-light text-center p-3 rounded-top">
+            <img src="img/mesorregioes.png" class="card-img-top img-fluid modal-trigger" alt="Mesorregiões" style="height: 240px; object-fit: contain; cursor: pointer;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-secondary mb-2 w-auto align-self-start">Divisão Territorial</span>
+            <h5 class="card-title fw-bold">Mesorregiões</h5>
+            <p class="card-text text-muted flex-grow-1">Divisão macrorregional e agrupamento dos municípios da área de estudo.</p>
+            <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="openMapModal('img/mesorregioes.png', 'Mesorregiões')"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Ampliar Mapa</button>
+          </div>
+        </div>
+      </div>
 
-			<!-- Item 5 -->
-			<div class="col-md-6">
-				<div class="card h-100 shadow-sm">
-					<div class="bg-light text-center p-2">
-						<img src="img/infra_estrutura_hidrica2.png" class="card-img-top" alt="Infraestrutura Hídrica" style="height: 300px; object-fit: contain;">
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Infraestrutura Hídrica</h5>
-						<p class="card-text">Infraestruturas e adutoras principais integradas à rede de abastecimento.</p>
-					</div>
-				</div>
-			</div>
+      <!-- Item 4 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="bg-light text-center p-3 rounded-top">
+            <img src="img/microrregiao.png" class="card-img-top img-fluid modal-trigger" alt="Microrregiões" style="height: 240px; object-fit: contain; cursor: pointer;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-secondary mb-2 w-auto align-self-start">Divisão Territorial</span>
+            <h5 class="card-title fw-bold">Microrregiões</h5>
+            <p class="card-text text-muted flex-grow-1">Detalhamento administrativo interno e subdivisão territorial detalhada.</p>
+            <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="openMapModal('img/microrregiao.png', 'Microrregiões')"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Ampliar Mapa</button>
+          </div>
+        </div>
+      </div>
 
-			<!-- Item 6 -->
-			<div class="col-md-6">
-				<div class="card h-100 shadow-sm">
-					<div class="bg-light text-center p-2">
-						<img src="img/infra_estrutura_hidrica.png" class="card-img-top" alt="Infraestrutura Hídrica e Área de Influência das Adutoras" style="height: 300px; object-fit: contain;">
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Infraestrutura Hídrica e Área de Influência</h5>
-						<p class="card-text">Representação da área de influência direta das adutoras mapeadas.</p>
-					</div>
-				</div>
-			</div>
+      <!-- Item 5 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="bg-light text-center p-3 rounded-top">
+            <img src="img/infra_estrutura_hidrica2.png" class="card-img-top img-fluid modal-trigger" alt="Infraestrutura Hídrica" style="height: 240px; object-fit: contain; cursor: pointer;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-success mb-2 w-auto align-self-start">Infraestrutura</span>
+            <h5 class="card-title fw-bold">Infraestrutura Hídrica</h5>
+            <p class="card-text text-muted flex-grow-1">Redes de adutoras, estações de tratamento e obras estruturantes integradas.</p>
+            <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="openMapModal('img/infra_estrutura_hidrica2.png', 'Infraestrutura Hídrica')"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Ampliar Mapa</button>
+          </div>
+        </div>
+      </div>
 
-		</div>
-		<!-- Fim da grade -->
-	</div>
+      <!-- Item 6 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm card-hover">
+          <div class="bg-light text-center p-3 rounded-top">
+            <img src="img/infra_estrutura_hidrica.png" class="card-img-top img-fluid modal-trigger" alt="Área de Influência" style="height: 240px; object-fit: contain; cursor: pointer;">
+          </div>
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-success mb-2 w-auto align-self-start">Infraestrutura</span>
+            <h5 class="card-title fw-bold">Área de Influência das Adutoras</h5>
+            <p class="card-text text-muted flex-grow-1">Buffer espacial e raio de atendimento das adutoras e canais mapeados.</p>
+            <button class="btn btn-outline-primary btn-sm w-100 mt-2" onclick="openMapModal('img/infra_estrutura_hidrica.png', 'Área de Influência')"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Ampliar Mapa</button>
+          </div>
+        </div>
+      </div>
 
-	<!-- Importação do Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    </div>
+  </main>
+
+  <!-- Modal para Visualização da Imagem em Alta Resolução -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="modalTitle">Visualização do Mapa</h5>
+          <button type

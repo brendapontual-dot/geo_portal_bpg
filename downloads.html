@@ -1,21 +1,209 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>GeoPortal - Downloads</title>
-	<link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoPortal - Central de Downloads</title>
+
+  <!-- Bootstrap CSS & Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<div id="navbar">
-		<a href="index.html">Início</a> ||
-		<a href="galeria.html">Galeria</a> ||
-		<a href="downloads.html">Downloads</a>
-	</div>
 
-	<hr>
-	
-	<h1>Área de Downloads</h1>
+  <!-- Menu de Navegação -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <i class="fa-solid fa-earth-americas fa-lg"></i>
+        <span class="fw-bold">GeoPortal SIGWeb</span>
+      </a>
+      <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fa-solid fa-map me-1"></i> Mapa Interativo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="galeria.html"><i class="fa-solid fa-images me-1"></i> Galeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="downloads.html"><i class="fa-solid fa-download me-1"></i> Downloads</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+  <main class="container my-5">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-primary"><i class="fa-solid fa-file-arrow-down me-2"></i>Central de Downloads de Dados Geoespaciais</h1>
+      <p class="text-muted lead">Baixe as camadas vetoriais e conjuntos de dados abertos para uso em softwares SIG (QGIS, ArcGIS, etc.).</p>
+    </div>
+
+    <!-- Informações de Projeção -->
+    <div class="alert alert-info border-0 shadow-sm d-flex align-items-center gap-3 mb-4">
+      <i class="fa-solid fa-circle-info fa-2x text-info"></i>
+      <div>
+        <strong>Sistema de Referência de Coordenadas (SRC):</strong> Todos os arquivos vetoriais encontram-se estruturados no datum <strong>SIRGAS 2000 (EPSG:4674)</strong> ou WGS 84.
+      </div>
+    </div>
+
+    <!-- Tabela de Datasets -->
+    <div class="card border-0 shadow-sm overflow-hidden">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Camada / Dataset</th>
+              <th>Geometria</th>
+              <th>Atributos Principais</th>
+              <th>Formatos Disponíveis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dataset 1 -->
+            <tr>
+              <td>
+                <div class="fw-bold text-primary"><i class="fa-solid fa-water me-2"></i>Açudes Monitorados</div>
+                <small class="text-muted">Reservatórios hídricos e açudagem estadual</small>
+              </td>
+              <td><span class="badge bg-primary">Polígono</span></td>
+              <td>Nome, Executor, Finalidade, Município, Capacidade (m³)</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/acudes.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 2 -->
+            <tr>
+              <td>
+                <div class="fw-bold text-success"><i class="fa-solid fa-draw-polygon me-2"></i>Bacias Hidrográficas</div>
+                <small class="text-muted">Delimitação física das bacias hidrográficas</small>
+              </td>
+              <td><span class="badge bg-success">Polígono</span></td>
+              <td>Nome da Bacia, Perímetro (km), Área (km²)</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/bacias_hidro.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="dados/Bacias-hidrograficas-da-paraiba.rar" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 3 -->
+            <tr>
+              <td>
+                <div class="fw-bold text-info"><i class="fa-solid fa-water-ladders me-2"></i>Rios - Drenagem Principal</div>
+                <small class="text-muted">Rede hidrográfica principal e cursos d'água</small>
+              </td>
+              <td><span class="badge bg-info text-dark">Linha</span></td>
+              <td>Nome do Rio, Ordem de Strahler</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/rios_drenagem_principal.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 4 -->
+            <tr>
+              <td>
+                <div class="fw-bold text-warning text-dark"><i class="fa-solid fa-bore-hole me-2"></i>Poços Tubulares</div>
+                <small class="text-muted">Inventário de poços profundos perfurados na Paraíba</small>
+              </td>
+              <td><span class="badge bg-warning text-dark">Ponto</span></td>
+              <td>Município, Proprietário, Profundidade, Vazão (m³/h), Data</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/pocos_pb.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-csv me-1"></i> CSV</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 5: Mesorregiões -->
+            <tr>
+              <td>
+                <div class="fw-bold" style="color: #6f42c1;"><i class="fa-solid fa-layer-group me-2"></i>Mesorregiões</div>
+                <small class="text-muted">Divisão macrorregional estipulada pelo IBGE</small>
+              </td>
+              <td><span class="badge" style="background-color: #6f42c1;">Polígono</span></td>
+              <td>Nome da Mesorregião (NM_MESO), Código Geográfico (CD_GEOCME)</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/mesorregioes.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 6: Microrregiões -->
+            <tr>
+              <td>
+                <div class="fw-bold" style="color: #fd7e14;"><i class="fa-solid fa-border-all me-2"></i>Microrregiões</div>
+                <small class="text-muted">Agrupamentos municipais com integração regional</small>
+              </td>
+              <td><span class="badge" style="background-color: #fd7e14;">Polígono</span></td>
+              <td>Nome da Microrregião (NM_MICRO), Código Geográfico (CD_GEOCMI)</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/microrregioes.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 7 -->
+            <tr>
+              <td>
+                <div class="fw-bold text-secondary"><i class="fa-solid fa-city me-2"></i>Limites Municipais</div>
+                <small class="text-muted">Malha territorial municipal com atributos IBGE</small>
+              </td>
+              <td><span class="badge bg-secondary">Polígono</span></td>
+              <td>Nome, Mesorregião, Microrregião, Área (km²), População, Densidade Demográfica</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/limites_municipais.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Dataset 8 -->
+            <tr>
+              <td>
+                <div class="fw-bold text-danger"><i class="fa-solid fa-pipe-valve me-2"></i>Sistemas Adutores</div>
+                <small class="text-muted">Tubulações e rede adutora estadual (SIN)</small>
+              </td>
+              <td><span class="badge bg-danger">Linha</span></td>
+              <td>ADUTORA, SITUAÇÃO, ESTADO</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <a href="dados/adutoras.js" download class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-file-code me-1"></i> GeoJSON</a>
+                  <a href="#" class="btn btn-success btn-sm"><i class="fa-solid fa-file-zipper me-1"></i> SHP (ZIP)</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-3 text-center mt-auto">
+    <div class="container">
+      <small>&copy; 2026 SIGWeb GeoPortal - Gestão de Recursos Hídricos e Informação Geográfica.</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
