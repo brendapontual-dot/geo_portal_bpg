@@ -1,4 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  --primary-color: #0f4c81;
+  --secondary-color: #146c94;
+  --accent-color: #19a7ce;
+  --bg-light: #f4f7fa;
+  --surface-white: #ffffff;
+  --border-subtle: #e2e8f0;
+  --dark-text: #1e293b;
+  --muted-text: #64748b;
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 14px 34px rgba(15, 42, 68, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--dark-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.container,
+.container-fluid {
+  width: 100%;
+  max-width: 100% !important;
+}
+
+/* Navbar Coesa em Todo o GeoPortal */
+.navbar-custom {
+  width: 100%;
+  background: linear-gradient(135deg, #0b3954 0%, var(--primary-color) 55%, var(--secondary-color) 100%);
+  box-shadow: 0 4px 14px rgba(11, 57, 84, 0.16);
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: #ffffff !important;
+  font-size: 0.94rem;
+}
+
+.navbar-custom .nav-link {
+  opacity: 0.85;
+  border-radius: 8px;
+  padding: 0.42rem 0.85rem !important;
+  transition: all 0.2s ease;
+}
+
+.navbar-custom .nav-link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.navbar-custom .nav-link.active {
+  opacity: 1;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.16);
+  border-bottom: 2px solid #7dd3fc;
+}
+
+/* Cartão Principal do Mapa Interativo */
+.map-portal-card {
+  width: 100%;
+  background: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.map-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.8rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.map-topbar-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-topbar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-map-tool {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.36rem 0.72rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: var(--dark-text);
+  transition: all 0.18s ease;
+}
+
+.btn-map-tool:hover {
+  background: #eef2f6;
+  color: var(--primary-color);
+  border-color: #94a3b8;
+}
+
+.btn-map-tool.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* Layout Lado a Lado: Painel Lateral Esquerdo Fora do Mapa + Mapa à Direita */
+.map-workspace-grid {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  min-height: 640px;
+}
+
+.map-sidebar-outside {
+  width: 320px;
+  flex-shrink: 0;
+  background: #f8fafc;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  max-height: 720px;
+}
+
+.map-panel-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #eef2f6;
+  padding: 6px;
+  gap: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.map-panel-tab {
+  border: none;
+  background: transparent;
+  color: var(--muted-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.map-panel-tab.active {
+  background: #ffffff;
+  color: var(--primary-color);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+}
+
+.map-panel-body {
+  padding: 0.85rem 0.95rem 1rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.map-panel-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.map-panel-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.panel-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-color);
+  margin: 0.85rem 0 0.45rem;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.panel-section-label:first-child {
+  margin-top: 0;
+}
+
+/* Cards de Camada com Visibilidade e Transparência */
+.layer-control-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.layer-control-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.layer-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.layer-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.81rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  flex: 1;
+}
+
+.layer-check-label input[type="checkbox"] {
+  accent-color: var(--primary-color);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.legend-symbol {
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.opacity-label {
+  font-size: 0.7rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  background: #e0f2fe;
+  padding: 0.08rem 0.42rem;
+  border-radius: 6px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.layer-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.38rem;
+}
+
+.layer-slider-row .form-range {
+  margin: 0;
+  height: 0.85rem;
+}
+
+.layer-slider-row .form-range::-webkit-slider-thumb {
+  background: var(--primary-color);
+}
+
+/* Itens da Legenda */
+.legend-row-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--dark-text);
+  padding: 0.42rem 0.55rem;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 0.4rem;
+}
+
+.legend-swatch {
+  width: 18px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* Paleta Cartográfica Profissional e Sóbria */
+.symbol-acudes {
+  background-color: #0ea5e9;
+  border: 1.5px solid #0c4a6e;
+}
+
+.symbol-bacias {
+  background-color: rgba(44, 122, 123, 0.38);
+  border: 1.8px solid #1e3a5f;
+}
+
+.symbol-rios {
+  background-color: #0284c7;
+  height: 4px !important;
+  border-radius: 99px;
+}
+
+.symbol-adutoras {
+  background-color: #c53030;
+  height: 4px !important;
+  border-radius: 99px;
+}
+
+.symbol-limites {
+  background-color: rgba(100, 116, 139, 0.12);
+  border: 1.5px dashed #475569;
+}
+
+.symbol-mesorregioes {
+  background: linear-gradient(135deg, #2b6cb0, #2f855a, #8b5e3c);
+  border: 1px solid #334155;
+}
+
+.symbol-microrregioes {
+  background: linear-gradient(135deg, #90cdf4, #9ae6b4, #fbd38d);
+  border: 1px dashed #475569;
+}
+
+.symbol-pocos {
+  background-color: #d69e2e;
+  border: 1.5px solid #744210;
+  border-radius: 50% !important;
+}
+
+/* Container e Canvas do Mapa */
+#map-container {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
 #map {
-	height: 500px;
-	border: 1px solid #000000;
+  width: 100%;
+  height: 100%;
+  min-height: 640px;
+  z-index: 1;
+  background: #e2e8f0;
+}
+
+/* Esconde controle nativo duplicado */
+.leaflet-top.leaflet-right .leaflet-control-layers {
+  display: none !important;
+}
+
+/* Popups do Leaflet */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.popup-title {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.popup-table {
+  width: 100%;
+  font-size: 12.5px;
+  margin-bottom: 0;
+}
+
+.popup-table td {
+  padding: 3px 6px;
+}
+
+/* Cards da Galeria e Downloads */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Rodapé Consistente */
+footer {
+  width: 100%;
+  background-color: #0b3954;
+  color: #e2e8f0;
+}
+
+@media (max-width: 991.98px) {
+  .map-workspace-grid {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .map-sidebar-outside {
+    width: 100%;
+    max-height: 360px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  #map {
+    min-height: 460px;
+    height: 62vh;
+  }
 }
